@@ -28,4 +28,4 @@ jobs:
       run: |
         pytest --cov=mistral_ocr tests/
       env:
-        MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }} 
+        MISTRAL_API_KEY: "dummy_api_key_for_tests" 

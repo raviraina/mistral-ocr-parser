@@ -20,7 +20,8 @@ class TestMistralOCRParser(unittest.TestCase):
         """
         Set up test environment.
         """
-        self.api_key = os.getenv("MISTRAL_API_KEY", "test_api_key")
+        # Use a dummy API key for tests
+        self.api_key = "test_api_key"
         self.test_pdf_path = Path("tests/data/test.pdf")
         self.test_output_path = Path("tests/data/test_output.md")
 
@@ -43,21 +44,25 @@ class TestMistralOCRParser(unittest.TestCase):
         if self.test_output_path.exists():
             self.test_output_path.unlink()
 
-    def test_parser_initialization(self):
+    @patch("mistral_ocr.parser.Mistral")
+    def test_parser_initialization(self, mock_mistral):
         """
         Test parser initialization.
         """
         parser = MistralOCRParser(api_key=self.api_key)
         self.assertEqual(parser.api_key, self.api_key)
         self.assertIsNotNone(parser.client)
+        mock_mistral.assert_called_once_with(api_key=self.api_key)
 
-    def test_parser_initialization_with_env_var(self):
+    @patch("mistral_ocr.parser.Mistral")
+    def test_parser_initialization_with_env_var(self, mock_mistral):
         """
         Test parser initialization with environment variable.
         """
         with patch.dict(os.environ, {"MISTRAL_API_KEY": "env_api_key"}):
             parser = MistralOCRParser()
             self.assertEqual(parser.api_key, "env_api_key")
+            mock_mistral.assert_called_once_with(api_key="env_api_key")
 
     def test_parser_initialization_without_api_key(self):
         """

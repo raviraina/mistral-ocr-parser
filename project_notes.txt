@@ -1,0 +1,105 @@
+# Mistral OCR Project Notes
+
+## Project Requirements
+- Parse PDF documents using Mistral OCR API
+- Extract text content while maintaining document structure
+- Convert images in the PDF into structured markdown sections
+- Provide detailed descriptions of images with structured data
+- Create a lightweight, installable Python package
+
+## Technical Approach
+- Use Mistral OCR API to process PDF documents
+- Extract text and image content from the OCR results
+- Format images with descriptive text in markdown
+- Maintain document structure and hierarchy
+- Handle complex layouts including multi-column text and mixed content
+- Organize code into a proper Python package structure
+
+## Implementation Details
+- Created a Python package with modular structure
+- Separated functionality into logical modules (parser, image, utils)
+- Used Mistral's multimodal capabilities to generate detailed image descriptions
+- Implemented batch processing for handling multiple PDFs
+- Added command-line interfaces for easy usage
+- Structured output in markdown format with proper formatting
+- Added unit tests for key functionality
+- Made the package installable with pyproject.toml
+- Added helper scripts for running examples and tests
+
+## Dependencies
+- mistralai Python client for API access
+- pathlib for file handling
+- json for processing API responses
+- PIL/Pillow for image processing
+- dotenv for environment variable management
+- tqdm for progress tracking
+
+## Development Dependencies
+- pytest for testing
+- pytest-cov for test coverage
+- black for code formatting
+- isort for import sorting
+- flake8 for linting
+- mypy for type checking
+
+## API Key Management
+- Store API key securely in .env file
+- Allow API key to be passed as an environment variable or command-line argument
+- Provide clear instructions for API key setup
+
+## Output Format
+- Generate markdown output with proper formatting
+- Include structured data for images (dimensions, position, content description)
+- Maintain document hierarchy (headers, paragraphs, lists, tables)
+- Provide detailed image descriptions with metadata
+
+## Package Structure
+```
+mistral-ocr/
+├── .github/                      # GitHub specific files
+│   └── workflows/                # CI/CD workflows
+│       └── tests.yml             # Automated testing
+├── mistral_ocr/                  # Main package directory
+│   ├── __init__.py               # Package initialization
+│   ├── parser.py                 # Core parser functionality
+│   ├── image.py                  # Image processing functionality
+│   └── utils.py                  # Utility functions
+├── examples/                     # Example scripts
+│   ├── simple_example.py         # Basic usage example
+│   └── batch_processing.py       # Batch processing example
+├── tests/                        # Test directory
+│   ├── __init__.py               # Test package initialization
+│   ├── test_parser.py            # Parser tests
+│   └── test_image.py             # Image processing tests
+├── .gitignore                    # Git ignore file
+├── .env.example                  # Example environment file
+├── LICENSE                       # License file
+├── pyproject.toml                # Modern Python packaging
+├── README.md                     # Project documentation
+├── requirements.txt              # Dependencies
+├── run_examples.py               # Script to run examples
+└── run_tests.py                  # Script to run tests
+```
+
+## Usage Examples
+- Single PDF processing: `mistral-ocr --input example.pdf --output example_output.md`
+- Batch processing: `mistral-ocr-batch --input-dir pdfs/ --output-dir outputs/`
+- Programmatic usage: `from mistral_ocr import parse_pdf`
+- Running examples: `python run_examples.py simple_example`
+- Running tests: `python run_tests.py --coverage`
+
+## Installation
+- From PyPI: `pip install mistral-ocr`
+- From source: `pip install -e .`
+- For development: `pip install -e ".[dev]"`
+
+## Future Enhancements
+- Add support for more output formats (JSON, HTML, etc.)
+- Implement caching to avoid redundant API calls
+- Add error handling and retry mechanisms
+- Improve image description quality with custom prompts
+- Add support for table extraction and formatting
+- Implement progress tracking for large documents
+- Add support for custom OCR models and parameters
+- Add more comprehensive documentation with Sphinx
+- Implement continuous deployment to PyPI 

@@ -3,7 +3,7 @@
 A lightweight Python library for parsing PDF documents using Mistral's OCR API, extracting text content while maintaining document structure, and converting images into structured markdown sections with detailed descriptions.
 
 [![Tests](https://github.com/raviraina/mistral-ocr-parser/actions/workflows/tests.yml/badge.svg)](https://github.com/raviraina/mistral-ocr-parser/actions/workflows/tests.yml)
-[![PyPI version](https://badge.fury.io/py/mistral-ocr.svg)](https://badge.fury.io/py/mistral-ocr)
+[![PyPI version](https://badge.fury.io/py/mistral-ocr-parser.svg)](https://badge.fury.io/py/mistral-ocr-parser)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features

@@ -27,6 +27,7 @@ dependencies = [
     "markdown>=3.5.1",
     "pillow>=10.0.0",
     "tqdm>=4.66.1",
+    "pycountry>=22.3.5",
 ]
 
 [project.optional-dependencies]

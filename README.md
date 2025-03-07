@@ -22,7 +22,7 @@ A lightweight Python library for parsing PDF documents using Mistral's OCR API, 
 ### From PyPI
 
 ```bash
-pip install mistral-ocr
+pip install mistral-ocr-parser
 ```
 
 ### From Source

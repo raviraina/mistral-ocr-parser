@@ -121,6 +121,18 @@ mistral-ocr/
 - Add more comprehensive documentation with Sphinx
 - Implement continuous deployment to PyPI 
 
+## Publishing to PyPI
+- Package name: mistral-ocr-parser
+- Version: 0.1.0
+- Required steps:
+  1. Update package information in pyproject.toml
+  2. Build the package with `python -m build`
+  3. Create a PyPI account and generate an API token
+  4. Configure .pypirc file with the token
+  5. Upload to PyPI with `python -m twine upload dist/*`
+  6. Verify the package is available on PyPI
+  7. Test installation with `pip install mistral-ocr-parser`
+
 ## Python Version Requirements
 - The project now requires Python 3.9 or above
 - Updated GitHub Actions workflow to test on Python 3.9, 3.10, 3.11, and 3.12

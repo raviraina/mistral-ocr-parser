@@ -41,8 +41,8 @@ dev = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/raviraina/mistral-ocr"
-"Bug Tracker" = "https://github.com/raviraina/mistral-ocr/issues"
+"Homepage" = "https://github.com/raviraina/mistral-ocr-parser"
+"Bug Tracker" = "https://github.com/raviraina/mistral-ocr-parser/issues"
 
 [project.scripts]
 mistral-ocr = "mistral_ocr.parser:main"

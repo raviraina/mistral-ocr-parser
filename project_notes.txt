@@ -120,3 +120,29 @@ mistral-ocr/
 - Add support for custom OCR models and parameters
 - Add more comprehensive documentation with Sphinx
 - Implement continuous deployment to PyPI 
+
+## Python Version Requirements
+- The project now requires Python 3.9 or above
+- Updated GitHub Actions workflow to test on Python 3.9, 3.10, 3.11, and 3.12
+- Using Ubuntu 22.04 for GitHub Actions to ensure compatibility
+
+## Code Style and Standards
+- Using Python 3.9+ typing syntax (e.g., list[str] instead of List[str])
+- Black configuration targets Python 3.9 and above
+- MyPy configuration targets Python 3.9
+
+## API Usage
+- Using the Mistral API with the pixtral-12b-latest model for OCR parsing
+- Properly implementing the chat.parse method with appropriate schema
+
+## Dependencies
+- mistralai>=0.0.10
+- python-dotenv>=1.0.0
+- markdown>=3.5.1
+- pillow>=10.0.0
+- tqdm>=4.66.1
+
+## Development Notes
+- When adding new code, ensure it's compatible with Python 3.9+
+- Use modern typing syntax (PEP 585) for all type annotations
+- Ensure all GitHub Actions tests pass before merging changes 

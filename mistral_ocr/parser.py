@@ -6,7 +6,7 @@ import os
 import json
 import argparse
 from pathlib import Path
-from typing import Optional, Union
+from typing import Optional, Union, Any
 
 from dotenv import load_dotenv
 from tqdm import tqdm
@@ -25,24 +25,22 @@ class MistralOCRParser:
     structured markdown output with detailed image descriptions.
     """
 
-    def __init__(self, api_key: Optional[str] = None):
+    def __init__(self, api_key: str | None = None):
         """
         Initialize the MistralOCRParser with the provided API key.
 
         Args:
-            api_key: Mistral API key. If not provided, it will be loaded from
-                    the MISTRAL_API_KEY environment variable.
+            api_key: Mistral API key. If not provided, it will be read from the MISTRAL_API_KEY environment variable.
         """
-        self.api_key = api_key or os.getenv("MISTRAL_API_KEY")
+        self.api_key = api_key or os.environ.get("MISTRAL_API_KEY")
         if not self.api_key:
             raise ValueError(
-                "Mistral API key is required. Please provide it as an argument or set the MISTRAL_API_KEY environment variable."
+                "API key must be provided either as an argument or as the MISTRAL_API_KEY environment variable."
             )
-
         self.client = Mistral(api_key=self.api_key)
 
     def parse_pdf(
-        self, pdf_path: Union[str, Path], output_path: Optional[Union[str, Path]] = None
+        self, pdf_path: Union[str, Path], output_path: Union[str, Path] | None = None
     ) -> str:
         """
         Parse a PDF document using Mistral's OCR API and generate structured markdown output.
@@ -204,8 +202,8 @@ class MistralOCRParser:
 
 def parse_pdf(
     pdf_path: Union[str, Path],
-    output_path: Optional[Union[str, Path]] = None,
-    api_key: Optional[str] = None,
+    output_path: Union[str, Path] | None = None,
+    api_key: str | None = None,
 ) -> str:
     """
     Parse a PDF document using Mistral's OCR API and generate structured markdown output.

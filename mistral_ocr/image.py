@@ -5,7 +5,7 @@ Image processing functionality for the Mistral OCR PDF parser.
 import base64
 import json
 import io
-from typing import Any, Dict, Union
+from typing import Any, Dict, List, Union
 from pathlib import Path
 from enum import Enum
 from PIL import Image
@@ -62,16 +62,16 @@ try:
         """
 
         file_name: str
-        topics: list[str]
-        languages: list[Language]
-        ocr_contents: dict[str, Any]
+        topics: List[str]
+        languages: List[Language]
+        ocr_contents: Dict[str, Any]
 
 except ImportError:
     PYDANTIC_AVAILABLE = False
-    StructuredOCR = dict[str, Any]
+    StructuredOCR = Dict[str, Any]
 
 
-def generate_image_description(image_base64: str, client) -> dict[str, Any]:
+def generate_image_description(image_base64: str, client) -> Dict[str, Any]:
     """
     Generate a detailed description of an image using Mistral.
 
@@ -155,7 +155,7 @@ def generate_image_description(image_base64: str, client) -> dict[str, Any]:
 
 def process_image_ocr(
     image_path: Union[str, Path], client, model: str = "mistral-ocr-latest"
-) -> dict[str, Any]:
+) -> Dict[str, Any]:
     """
     Process an image using Mistral's OCR capabilities.
 
@@ -191,7 +191,7 @@ def structured_ocr(
     client,
     ocr_model: str = "mistral-ocr-latest",
     parse_model: str = "pixtral-12b-latest",
-) -> Union[StructuredOCR, dict[str, Any]]:
+) -> Union[StructuredOCR, Dict[str, Any]]:
     """
     Process an image using Mistral's OCR capabilities and convert to structured data.
 

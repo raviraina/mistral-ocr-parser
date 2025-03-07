@@ -25,7 +25,7 @@ class MistralOCRParser:
     structured markdown output with detailed image descriptions.
     """
 
-    def __init__(self, api_key: str | None = None):
+    def __init__(self, api_key: Optional[str] = None):
         """
         Initialize the MistralOCRParser with the provided API key.
 
@@ -40,7 +40,7 @@ class MistralOCRParser:
         self.client = Mistral(api_key=self.api_key)
 
     def parse_pdf(
-        self, pdf_path: Union[str, Path], output_path: Union[str, Path] | None = None
+        self, pdf_path: Union[str, Path], output_path: Optional[Union[str, Path]] = None
     ) -> str:
         """
         Parse a PDF document using Mistral's OCR API and generate structured markdown output.
@@ -202,19 +202,20 @@ class MistralOCRParser:
 
 def parse_pdf(
     pdf_path: Union[str, Path],
-    output_path: Union[str, Path] | None = None,
-    api_key: str | None = None,
+    output_path: Optional[Union[str, Path]] = None,
+    api_key: Optional[str] = None,
 ) -> str:
     """
-    Parse a PDF document using Mistral's OCR API and generate structured markdown output.
+    Parse a PDF document using Mistral's OCR API.
 
     Args:
-        pdf_path: Path to the PDF file to parse.
-        output_path: Optional path to save the output markdown file.
+        pdf_path: Path to the PDF file.
+        output_path: Path to save the output markdown file. If not provided,
+                    the output will be saved in the same directory as the PDF file.
         api_key: Optional Mistral API key.
 
     Returns:
-        A string containing the structured markdown output.
+        The path to the generated markdown file.
     """
     parser = MistralOCRParser(api_key=api_key)
     return parser.parse_pdf(pdf_path, output_path)

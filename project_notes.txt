@@ -127,7 +127,7 @@ mistral-ocr/
 - Using Ubuntu 22.04 for GitHub Actions to ensure compatibility
 
 ## Code Style and Standards
-- Using Python 3.9+ typing syntax (e.g., list[str] instead of List[str])
+- Using Python 3.9 compatible typing syntax (e.g., List[str] instead of list[str])
 - Black configuration targets Python 3.9 and above
 - MyPy configuration targets Python 3.9
 
@@ -144,5 +144,5 @@ mistral-ocr/
 
 ## Development Notes
 - When adding new code, ensure it's compatible with Python 3.9+
-- Use modern typing syntax (PEP 585) for all type annotations
+- Use typing syntax compatible with Python 3.9 (List, Dict, Optional, etc.)
 - Ensure all GitHub Actions tests pass before merging changes 

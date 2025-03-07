@@ -3,7 +3,7 @@ Utility functions for the Mistral OCR PDF parser.
 """
 
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
 from tqdm import tqdm
 
 from .parser import MistralOCRParser
@@ -12,9 +12,9 @@ from .parser import MistralOCRParser
 def batch_process_pdfs(
     input_dir: str,
     output_dir: str,
-    api_key: str | None = None,
+    api_key: Optional[str] = None,
     file_pattern: str = "*.pdf",
-) -> list[str]:
+) -> List[str]:
     """
     Process multiple PDF files in a directory using Mistral's OCR API.
 

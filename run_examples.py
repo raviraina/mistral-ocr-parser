@@ -67,7 +67,15 @@ def main():
         if examples:
             print("Available examples:")
             for example in examples:
-                print(f"  - {example}")
+                description = ""
+                if example == "simple_example":
+                    description = "- Demonstrates basic PDF parsing with mistral7b.pdf"
+                elif example == "batch_processing":
+                    description = "- Shows how to process multiple PDFs in batch"
+                elif example == "image_example":
+                    description = "- Demonstrates processing an image (receipt.png) with Mistral OCR"
+                
+                print(f"  - {example} {description}")
         else:
             print("No examples found.")
         return 0
@@ -80,7 +88,15 @@ def main():
         
         print("Available examples:")
         for example in examples:
-            print(f"  - {example}")
+            description = ""
+            if example == "simple_example":
+                description = "- Demonstrates basic PDF parsing with mistral7b.pdf"
+            elif example == "batch_processing":
+                description = "- Shows how to process multiple PDFs in batch"
+            elif example == "image_example":
+                description = "- Demonstrates processing an image (receipt.png) with Mistral OCR"
+            
+            print(f"  - {example} {description}")
         
         print("\nRun an example with: python run_examples.py <example_name>")
         return 0

@@ -14,6 +14,8 @@ A lightweight Python library for parsing PDF documents using Mistral's OCR API, 
 - Structured markdown output
 - Support for complex document layouts
 - Batch processing capabilities
+- Structured OCR with schema validation
+- Language detection and topic extraction
 
 ## Installation
 
@@ -70,6 +72,25 @@ mistral-ocr --input document.pdf --output result.md
 mistral-ocr-batch --input-dir pdfs/ --output-dir outputs/
 ```
 
+### Structured OCR
+
+```python
+from mistral_ocr import structured_ocr
+from mistralai import Mistral
+
+# Initialize Mistral client
+client = Mistral(api_key="your_api_key_here")
+
+# Process an image with structured OCR
+result = structured_ocr("path/to/your/image.png", client)
+
+# Access structured data
+print(f"File name: {result['file_name']}")
+print(f"Topics: {result['topics']}")
+print(f"Languages: {result['languages']}")
+print(f"OCR Contents: {result['ocr_contents']}")
+```
+
 ## Running Examples
 
 The repository includes example scripts that demonstrate how to use the library. You can run these examples using the `run_examples.py` script:
@@ -85,8 +106,11 @@ python run_examples.py simple_example
 Available examples:
 - `simple_example`: Demonstrates basic PDF parsing
 - `batch_processing`: Shows how to process multiple PDFs in batch
+- `image_example`: Demonstrates processing an image with structured OCR
 
 ## Example Output
+
+### PDF Parsing
 
 The output is a markdown file that preserves the document structure and includes detailed descriptions of images:
 
@@ -109,6 +133,46 @@ This is the text content of section 1.
 ## Section 2
 
 This is the text content of section 2.
+```
+
+### Structured OCR
+
+The structured OCR output is a JSON object with the following structure:
+
+```json
+{
+    "file_name": "receipt.png",
+    "topics": ["receipt", "transaction", "purchase"],
+    "languages": ["English"],
+    "ocr_contents": {
+        "store": {
+            "name": "GROCERY STORE",
+            "address": "123 Main Street, Anytown, USA",
+            "phone": "555-123-4567"
+        },
+        "date": "2023-05-15",
+        "time": "14:30",
+        "items": [
+            {
+                "name": "Milk",
+                "quantity": 1,
+                "price": 3.99
+            },
+            {
+                "name": "Bread",
+                "quantity": 2,
+                "price": 2.49
+            }
+        ],
+        "subtotal": 8.97,
+        "tax": 0.72,
+        "total": 9.69,
+        "payment": {
+            "method": "Credit Card",
+            "card": "VISA ****1234"
+        }
+    }
+}
 ```
 
 ## Advanced Usage
@@ -136,6 +200,22 @@ parser = MistralOCRParser(api_key="your_api_key_here")
 
 # Parse a PDF file
 result = parser.parse_pdf("document.pdf", "output.md")
+```
+
+### Image Processing
+
+```python
+from mistral_ocr import process_image_ocr
+from mistralai import Mistral
+
+# Initialize Mistral client
+client = Mistral(api_key="your_api_key_here")
+
+# Process an image with OCR
+ocr_result = process_image_ocr("image.png", client)
+
+# Extract markdown content
+markdown_content = ocr_result.pages[0].markdown
 ```
 
 ## Development

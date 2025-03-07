@@ -6,6 +6,7 @@
 - Convert images in the PDF into structured markdown sections
 - Provide detailed descriptions of images with structured data
 - Create a lightweight, installable Python package
+- Support structured OCR with schema validation
 
 ## Technical Approach
 - Use Mistral OCR API to process PDF documents
@@ -14,6 +15,7 @@
 - Maintain document structure and hierarchy
 - Handle complex layouts including multi-column text and mixed content
 - Organize code into a proper Python package structure
+- Implement structured OCR with schema validation using Pydantic
 
 ## Implementation Details
 - Created a Python package with modular structure
@@ -25,6 +27,8 @@
 - Added unit tests for key functionality
 - Made the package installable with pyproject.toml
 - Added helper scripts for running examples and tests
+- Implemented structured OCR with schema validation
+- Added support for language detection and topic extraction
 
 ## Dependencies
 - mistralai Python client for API access
@@ -33,6 +37,8 @@
 - PIL/Pillow for image processing
 - dotenv for environment variable management
 - tqdm for progress tracking
+- pydantic for schema validation
+- pycountry for language code handling
 
 ## Development Dependencies
 - pytest for testing
@@ -52,6 +58,7 @@
 - Include structured data for images (dimensions, position, content description)
 - Maintain document hierarchy (headers, paragraphs, lists, tables)
 - Provide detailed image descriptions with metadata
+- Support structured JSON output with schema validation
 
 ## Package Structure
 ```
@@ -66,7 +73,8 @@ mistral-ocr/
 │   └── utils.py                  # Utility functions
 ├── examples/                     # Example scripts
 │   ├── simple_example.py         # Basic usage example
-│   └── batch_processing.py       # Batch processing example
+│   ├── batch_processing.py       # Batch processing example
+│   └── image_example.py          # Image processing example
 ├── tests/                        # Test directory
 │   ├── __init__.py               # Test package initialization
 │   ├── test_parser.py            # Parser tests
@@ -87,11 +95,20 @@ mistral-ocr/
 - Programmatic usage: `from mistral_ocr import parse_pdf`
 - Running examples: `python run_examples.py simple_example`
 - Running tests: `python run_tests.py --coverage`
+- Structured OCR: `from mistral_ocr import structured_ocr`
 
 ## Installation
 - From PyPI: `pip install mistral-ocr`
 - From source: `pip install -e .`
 - For development: `pip install -e ".[dev]"`
+
+## Structured OCR Features
+- Schema validation with Pydantic
+- Language detection
+- Topic extraction
+- Structured content extraction
+- Support for various document types
+- Fallback mechanisms for missing dependencies
 
 ## Future Enhancements
 - Add support for more output formats (JSON, HTML, etc.)
